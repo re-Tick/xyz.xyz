@@ -29,7 +29,7 @@ jobs:
           BUILDDATE=$(date -u +"%Y%m%d%H%M")
           GIT_COMMIT_REV=$(git log -n 1 --pretty=format:'%H')
 
-          IMAGENAME="docker.io/opsmx11/docker-swarm:${GITHASH}-4${GITHUB_RUN_NUMBER}"
+          IMAGENAME="docker.io/rajsomesetty/docker-swarm:${GITHASH}-4${GITHUB_RUN_NUMBER}"
 
           echo "Git hash: ${GITHASH}"
           echo "Build date: ${BUILDDATE}"
@@ -125,14 +125,13 @@ jobs:
               builduser: $builduser,
               giturl: $giturl,
               gitbranch: $gitbranch,
-              account: "uattt",
-              applicationname: "buildndeploy",
-              projectKey: "docker-swarm",
-              namespace: "nov-qa",
+              account: "dev",
+              applicationname: "docker-swarm",
+              namespace: "docker-swarm",
               artifacts: [
                 {
                   image: $image,
-                  service: "svcs-1"
+                  service: "docker-swarm"
                 }
               ]
             }' > payload.json
